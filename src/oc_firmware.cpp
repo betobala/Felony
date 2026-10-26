@@ -12,6 +12,12 @@
 #include "oc/UI/ui_events.h"
 #include "oc/sketch_prototypes.h"
 
+// defined in OC_apps.ino, called from the save hook in loop() (tools/port.py)
+namespace OC {
+void save_global_settings();
+void save_app_data();
+}
+
 #include "oc/o_c_REV.ino"
 #include "oc/APP_ASR.ino"
 #include "oc/APP_AUTOMATONNETZ.ino"

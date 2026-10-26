@@ -74,7 +74,14 @@ int main(int argc, char** argv) {
 	}
 	printf("out A peak during gate: %.3f V\n", peak);
 	ocrun::setGate(0, false);
+	// save as the module does before writing the patch, then power cycle with that EEPROM
+	ochw::hw.saveRequest = true;
+	run(0.3);
+	printf("save done: %d\n", !ochw::hw.saveRequest);
 	ocrun::stop();
+	ocrun::start();
+	run(4.0);
+	dump("after reboot");
 	printf("stopped, running=%d\n", ocrun::running());
 	return 0;
 }

@@ -28,6 +28,8 @@ struct Hardware {
 
 	uint8_t eeprom[EEPROM_SIZE];
 	std::atomic<bool> eepromDirty{false};
+	// set by the module before saving the patch; the firmware loop saves its settings and clears it
+	std::atomic<bool> saveRequest{false};
 
 	// time, advanced by the core ISR (16.666 kHz)
 	std::atomic<uint64_t> micros{0};

@@ -152,6 +152,11 @@ void FASTRUN loop() {
   OC::CORE::app_isr_enabled = true;
   uint32_t menu_redraws = 0;
   while (true) {
+    if (ochw::hw.saveRequest) {
+      OC::save_global_settings();
+      OC::save_app_data();
+      ochw::hw.saveRequest = false;
+    }
 
     // don't change current_app while it's running
     if (OC::UI_MODE_APP_SETTINGS == ui_mode) {

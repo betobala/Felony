@@ -2,6 +2,8 @@
 // The firmware in src/oc is the original code; only the hardware drivers were swapped for the
 // virtual ones in shim/ (see tools/port.py). This file is the panel and the I/O.
 #include <rack.hpp>
+#include <thread>
+#include <chrono>
 #include "OcRunner.hpp"
 #include "oc_hw.h"
 #include "Controls4ms.hpp"
@@ -89,6 +91,13 @@ struct Felony : Module {
 		json_t* root = json_object();
 		json_object_set_new(root, "theme", json_integer(theme));
 		json_object_set_new(root, "screenColor", json_integer(screenColor));
+		if (active && started && ocrun::running()) {
+			// let the firmware store the current app and its settings first (like a long press
+			// in the app list), so the patch reopens exactly where it was
+			ochw::hw.saveRequest = true;
+			for (int i = 0; i < 500 && ochw::hw.saveRequest; i++)
+				std::this_thread::sleep_for(std::chrono::milliseconds(1));
+		}
 		if (active)
 			json_object_set_new(root, "eeprom", json_string(string::toBase64(ochw::hw.eeprom, sizeof(ochw::hw.eeprom)).c_str()));
 		return root;
