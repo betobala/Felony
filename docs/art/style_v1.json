@@ -1,0 +1,29 @@
+{
+ "batch": "style_v1",
+ "originals": "docs/art/source/style_v1",
+ "defaults": {
+  "variants": 2,
+  "inputs": [
+   {
+    "path": "docs/art/source/refs/ref_4ms_ensemble_oscillator.png",
+    "role": "style reference only: copy its line weight, rounded outlined groups, black pill sublabels, big black knobs and black output box. Do NOT copy its layout, control count, text, logos or colours."
+   }
+  ]
+ },
+ "jobs": [
+  {
+   "id": "felony_light",
+   "kind": "illustration",
+   "style": "Style: a flat, high-contrast product illustration of a Eurorack module front panel, drawn in the visual language of the attached reference: warm bone panel #E8E6E1, bold uniform near-black outlines about 2 px, related controls grouped inside rounded rectangles with dark outlines, large matte black encoders with fine knurled edges, small black pill-shaped sublabels, one black rounded box holding the output jacks which sit in white rings, no gradients across the panel, no ornaments, only a soft contact shadow under controls. Palette: bone #E8E6E1, ink #0F1216, mid grey #6E7177, exactly one accent colour amber #E8A317 used only for small marks.",
+   "subject": "Subject: the complete front panel of a Eurorack module, 14 HP (71 mm wide, 128.5 mm tall), seen perfectly straight on, portrait orientation, the panel filling the whole image with no rack and no hands. From top to bottom: a small blank logo area; a large black rectangular OLED screen window with a thin dark bezel, showing only a few abstract thin white horizontal bars and a small white envelope curve (attack-decay shape), no letters; below it, two large black knurled push encoders, one left and one right, with two small flat round push buttons stacked vertically between them inside a rounded outlined group; then a rounded outlined group holding a row of four black round input jacks with silver rings; another rounded outlined group holding a second row of four input jacks; at the bottom a black rounded box holding a row of four round output jacks in white rings. Everything on a strict four-column grid. All labels are blank short black bars and pills, no letters or numbers visible.",
+   "selected": 2
+  },
+  {
+   "id": "felony_dark",
+   "kind": "illustration",
+   "style": "Style: a flat, high-contrast product illustration of a Eurorack module front panel, drawn in the visual language of the attached reference but inverted to a dark panel: graphite panel #17191B, light grey outlines #6B6F75 about 2 px, related controls grouped inside rounded rectangles, large matte black encoders with fine knurled edges, small light pill-shaped sublabels, one near-black rounded box holding the output jacks in light rings, no gradients across the panel, no ornaments. Palette: graphite #17191B, light ink #E6E8E8, grey #8A8D93, exactly one accent colour amber #E8B33C used only for small marks.",
+   "subject": "Subject: the complete front panel of a Eurorack module, 14 HP (71 mm wide, 128.5 mm tall), seen perfectly straight on, portrait orientation, the panel filling the whole image with no rack and no hands. From top to bottom: a small blank logo area; a large black rectangular OLED screen window with a thin bezel, showing only a few abstract thin white horizontal bars and a small white envelope curve (attack-decay shape), no letters; below it, two large black knurled push encoders, one left and one right, with two small flat round push buttons stacked vertically between them inside a rounded outlined group; then a rounded outlined group holding a row of four round input jacks; another rounded outlined group holding a second row of four input jacks; at the bottom a near-black rounded box holding a row of four round output jacks in light rings. Everything on a strict four-column grid. All labels are blank short light bars and pills, no letters or numbers visible.",
+   "selected": 2
+  }
+ ]
+}
