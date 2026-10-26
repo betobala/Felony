@@ -58,6 +58,14 @@ int main(int argc, char** argv) {
 	press(ocrun::BUTTON_RIGHT, 0.05);
 	run(1.0);
 	dump("selected app");
+	// edit the attack of channel A: press right to edit, turn, press again
+	press(ocrun::BUTTON_RIGHT, 0.05);
+	for (int i = 0; i < 6; i++) {
+		ocrun::turn(ocrun::ENC_RIGHT, 1);
+		run(0.12);
+	}
+	press(ocrun::BUTTON_RIGHT, 0.05);
+	dump("attack changed");
 	for (int k = 0; k < 3; k++) {
 		ocrun::setGate(0, true);
 		run(0.25);
@@ -82,6 +90,7 @@ int main(int argc, char** argv) {
 	ocrun::start();
 	run(4.0);
 	dump("after reboot");
+	ocrun::stop();
 	printf("stopped, running=%d\n", ocrun::running());
 	return 0;
 }

@@ -104,7 +104,7 @@ struct AppData {
 
   static constexpr size_t kAppDataSize = EEPROM_APPDATA_BINARY_SIZE;
   char data[kAppDataSize];
-  size_t used;
+  uint32_t used;
 };
 
 typedef PageStorage<EEPROMStorage, EEPROM_GLOBALSETTINGS_START, EEPROM_GLOBALSETTINGS_END, GlobalSettings> GlobalSettingsStorage;

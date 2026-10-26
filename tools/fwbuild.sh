@@ -2,7 +2,7 @@
 # Compile every firmware source (no Rack) to find porting errors quickly. Usage: tools/fwbuild.sh [file...]
 cd "$(dirname "$0")/.."
 mkdir -p build/fw
-FLAGS="-std=gnu++14 -O1 -fpermissive -w -DF_CPU=120000000 -Ishim -Isrc/oc"
+FLAGS="$EXTRA -std=gnu++14 -O1 -fpermissive -w -DF_CPU=120000000 -Ishim -Isrc/oc"
 files="$@"
 [ -z "$files" ] && files="src/oc_firmware.cpp shim/arduino.cpp $(find src/oc -name '*.cpp' | sort)"
 fail=0

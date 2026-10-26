@@ -134,6 +134,10 @@ void randomSeed(unsigned long seed);
 // ---- serial (debug output goes nowhere)
 struct SerialStub {
 	void begin(long) {}
+#ifdef PRINT_DEBUG
+	void print(const char* s) { fputs(s, stderr); }
+	void print(char* s) { fputs(s, stderr); }
+#endif
 	template <typename... T> void print(T...) {}
 	template <typename... T> void println(T...) {}
 	template <typename... T> void printf(T...) {}

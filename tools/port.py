@@ -85,6 +85,8 @@ sub('src/drivers/weegfx.cpp', 'void Graphics::print(uint32_t value, size_t width
 
 # keep the EEPROM layout of the Teensy (size_t is 4 bytes there)
 sub('braids_quantizer.h', '  size_t num_notes;', '  uint32_t num_notes;')
+# (with an 8 byte size_t the app data page gets padding the checksum reads past, and never loads)
+sub('OC_apps.ino', '  char data[kAppDataSize];\n  size_t used;', '  char data[kAppDataSize];\n  uint32_t used;')
 
 # Rack saves the patch: store the current app and every app's settings, as a long press in the
 # app list does on the hardware (requested by the module through ochw::hw.saveRequest)
