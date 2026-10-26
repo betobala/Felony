@@ -1,0 +1,23 @@
+{
+  "slug": "Felony",
+  "name": "Felony",
+  "version": "2.0.0",
+  "license": "MIT",
+  "brand": "Felony",
+  "author": "Beto",
+  "authorEmail": "",
+  "authorUrl": "",
+  "pluginUrl": "",
+  "manualUrl": "https://ornament-and-cri.me/user-manual-v1_3/",
+  "sourceUrl": "https://github.com/mxmxmx/O_C",
+  "donateUrl": "",
+  "changelogUrl": "",
+  "modules": [
+    {
+      "slug": "Felony",
+      "name": "Felony",
+      "description": "The Ornament & Crime firmware (quantizers, envelopes, LFOs, sequencers) running on a virtual O&C",
+      "tags": ["Quantizer", "Envelope generator", "LFO", "Sequencer", "Multiple"]
+    }
+  ]
+}
