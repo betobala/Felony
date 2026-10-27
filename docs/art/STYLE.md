@@ -1,7 +1,7 @@
 # Felony — guia de estilo
 
 Concept escolhido: **claro v2** (`docs/art/source/style_v1/felony_light__v2.png`), com o **escuro v2** como tema
-Slate. Linguagem de controles do 4ms, como Octo, Harmonion, Kobuleti e Zemun.
+Slate. Mesma linguagem de controles de Octo, Harmonion, Kobuleti e Zemun.
 
 ## Paleta (`fTheme()` e `fms::colors()` em `src/Felony.cpp`)
 

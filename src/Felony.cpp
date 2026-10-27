@@ -6,7 +6,7 @@
 #include <chrono>
 #include "OcRunner.hpp"
 #include "oc_hw.h"
-#include "Controls4ms.hpp"
+#include "Controls.hpp"
 #include "Stencil.hpp"
 
 using namespace rack;
