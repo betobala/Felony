@@ -392,7 +392,7 @@ struct PanelArt : Widget {
 
 		// a hairline around the screen bezel, two rules between the sections
 		nvgBeginPath(vg);
-		nvgRect(vg, mm2px(SCREEN.pos.x - 2.2f), mm2px(SCREEN.pos.y - 2.2f), mm2px(SCREEN.size.x + 4.4f), mm2px(SCREEN.size.y + 4.4f));
+		nvgRect(vg, mm2px(SCREEN.pos.x - 2.2f), mm2px(SCREEN.pos.y - 1.8f), mm2px(SCREEN.size.x + 4.4f), mm2px(SCREEN.size.y + 4.0f));
 		nvgStrokeColor(vg, k.dim);
 		nvgStrokeWidth(vg, mm2px(0.25f));
 		nvgStroke(vg);
@@ -405,7 +405,7 @@ struct PanelArt : Widget {
 		std::shared_ptr<window::Font> bold = pluginFont("BebasNeue-Regular.ttf");
 		if (!stencil || !bold)
 			return;
-		bb::nameplate(vg, CX, 4.4f, "FELONY", stencil->handle, k, 4.4f);
+		bb::nameplate(vg, CX, 3.4f, "FELONY", stencil->handle, k, 3.6f, bb::MARK_ENVELOPE, 22.0f, 2.2f);
 		nvgFontFaceId(vg, bold->handle);
 		nvgFontSize(vg, mm2px(5.2f));
 		nvgTextLetterSpacing(vg, mm2px(0.1f));
