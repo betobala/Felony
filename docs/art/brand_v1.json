@@ -1,0 +1,39 @@
+{
+ "batch": "brand_v1",
+ "originals": "docs/art/source/brand_v1",
+ "defaults": {
+  "variants": 2,
+  "inputs": [
+   {
+    "path": "docs/art/source/refs/ref_4ms_ensemble_oscillator.png",
+    "role": "reference only for the kind of controls (knobs, jacks, buttons, a screen). Do NOT copy its layout, colours, softness, text or logos."
+   }
+  ]
+ },
+ "jobs": [
+  {
+   "id": "bb_xerox",
+   "kind": "illustration",
+   "style": "Style: aggressive punk fanzine aesthetic, pure black and white only, no grey fills, no colour at all. The panel looks photocopied: harsh xerox grain and toner speckle, slightly misaligned hand-cut black blocks, strips of torn black tape used as label bars, a crooked grid, ransom-note energy, but the controls stay clean and readable. High contrast, raw, DIY.",
+   "subject": "Subject: the complete front panel of a Eurorack module, 14 HP (71 mm wide, 128.5 mm tall), seen perfectly straight on, portrait orientation, filling the whole image, no rack and no hands. From top to bottom: a blank band at the top for a name; a large black rectangular OLED screen showing a thin white attack-decay envelope curve; two large knurled push encoders left and right with two small round push buttons stacked between them; a row of four input jacks; a second row of four input jacks; a row of four output jacks. Every label is a blank bar or block, absolutely no letters or numbers anywhere."
+  },
+  {
+   "id": "bb_stencil",
+   "kind": "illustration",
+   "style": "Style: militant stencil aesthetic, pure black and white only, no colour. Matte black panel with stark white stencil-cut shapes, bold diagonal hazard stripes in black and white across one band, rows of small bullet-cartridge silhouettes as decorative marks, thick white frames around control groups, hard square corners, aggressive and industrial.",
+   "subject": "Subject: the complete front panel of a Eurorack module, 14 HP (71 mm wide, 128.5 mm tall), seen perfectly straight on, portrait orientation, filling the whole image, no rack and no hands. From top to bottom: a blank band at the top for a name; a large black rectangular OLED screen showing a thin white attack-decay envelope curve; two large knurled push encoders left and right with two small round push buttons stacked between them; a row of four input jacks; a second row of four input jacks; a row of four output jacks. Every label is a blank bar or block, absolutely no letters or numbers anywhere."
+  },
+  {
+   "id": "bb_brutal",
+   "kind": "illustration",
+   "style": "Style: brutalist Swiss poster aesthetic, pure black and white only, no colour. Flat white panel cut by huge heavy black blocks and thick black rules, massive oversized geometric shapes, crop marks and arrows, a rigid but violent asymmetric grid, controls sitting on black slabs. Bold, loud, minimal, confrontational.",
+   "subject": "Subject: the complete front panel of a Eurorack module, 14 HP (71 mm wide, 128.5 mm tall), seen perfectly straight on, portrait orientation, filling the whole image, no rack and no hands. From top to bottom: a blank band at the top for a name; a large black rectangular OLED screen showing a thin white attack-decay envelope curve; two large knurled push encoders left and right with two small round push buttons stacked between them; a row of four input jacks; a second row of four input jacks; a row of four output jacks. Every label is a blank bar or block, absolutely no letters or numbers anywhere."
+  },
+  {
+   "id": "bb_negative",
+   "kind": "illustration",
+   "style": "Style: dark negative aesthetic, pure black and white only, no colour. Deep black panel, thin sharp white hairlines outlining control groups, white controls rings, and one single bullet hole with radiating cracks in the glass-like panel near the top as the only ornament. Cold, precise, menacing, very high contrast.",
+   "subject": "Subject: the complete front panel of a Eurorack module, 14 HP (71 mm wide, 128.5 mm tall), seen perfectly straight on, portrait orientation, filling the whole image, no rack and no hands. From top to bottom: a blank band at the top for a name; a large black rectangular OLED screen showing a thin white attack-decay envelope curve; two large knurled push encoders left and right with two small round push buttons stacked between them; a row of four input jacks; a second row of four input jacks; a row of four output jacks. Every label is a blank bar or block, absolutely no letters or numbers anywhere."
+  }
+ ]
+}

@@ -1,0 +1,21 @@
+{
+  "id": "bb_negative",
+  "batch": "brand_v1",
+  "variant": 2,
+  "kind": "illustration",
+  "prompt": "Use your built-in image generation tool to create exactly ONE image for a video game art pipeline. Do not run shell commands, do not write or edit files and do not ask questions. When the image exists, reply only with the word DONE.\n\nStyle: dark negative aesthetic, pure black and white only, no colour. Deep black panel, thin sharp white hairlines outlining control groups, white controls rings, and one single bullet hole with radiating cracks in the glass-like panel near the top as the only ornament. Cold, precise, menacing, very high contrast.\n\nSubject: the complete front panel of a Eurorack module, 14 HP (71 mm wide, 128.5 mm tall), seen perfectly straight on, portrait orientation, filling the whole image, no rack and no hands. From top to bottom: a blank band at the top for a name; a large black rectangular OLED screen showing a thin white attack-decay envelope curve; two large knurled push encoders left and right with two small round push buttons stacked between them; a row of four input jacks; a second row of four input jacks; a row of four output jacks. Every label is a blank bar or block, absolutely no letters or numbers anywhere.\n\nThe artwork fills the entire frame, with no frame, border, wall, easel or hands around it.\n\nStrictly no text, letters, numbers, words, lettering, logos, brand marks, watermarks or signatures. No real people or celebrities, no real brands, no real-world landmarks.",
+  "inputs": [],
+  "codex_version": "codex-cli 0.160.1",
+  "model": "gpt-6-luna",
+  "effort": "low",
+  "thread_id": "01a17d9c-a348-7982-a241-58c5e32c35cf",
+  "created": "2026-10-27T10:47:10",
+  "seconds": 50,
+  "source_path": "C:\\Users\\beto-\\.codex\\generated_images\\01a17d9c-a348-7982-a241-58c5e32c35cf\\exec-9f8e74e9-d3f3-48d5-972d-6911b778094d.png",
+  "sha256": "4632cf7cc971943771ce8b56757625c7004384d973b8c2c4efe8fd4e2cc78b99",
+  "size": [
+    933,
+    1686
+  ],
+  "generator": "Codex CLI image_gen (codex exec)"
+}

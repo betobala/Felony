@@ -1,0 +1,21 @@
+{
+  "id": "bb_stencil",
+  "batch": "brand_v1",
+  "variant": 1,
+  "kind": "illustration",
+  "prompt": "Use your built-in image generation tool to create exactly ONE image for a video game art pipeline. Do not run shell commands, do not write or edit files and do not ask questions. When the image exists, reply only with the word DONE.\n\nStyle: militant stencil aesthetic, pure black and white only, no colour. Matte black panel with stark white stencil-cut shapes, bold diagonal hazard stripes in black and white across one band, rows of small bullet-cartridge silhouettes as decorative marks, thick white frames around control groups, hard square corners, aggressive and industrial.\n\nSubject: the complete front panel of a Eurorack module, 14 HP (71 mm wide, 128.5 mm tall), seen perfectly straight on, portrait orientation, filling the whole image, no rack and no hands. From top to bottom: a blank band at the top for a name; a large black rectangular OLED screen showing a thin white attack-decay envelope curve; two large knurled push encoders left and right with two small round push buttons stacked between them; a row of four input jacks; a second row of four input jacks; a row of four output jacks. Every label is a blank bar or block, absolutely no letters or numbers anywhere.\n\nThe artwork fills the entire frame, with no frame, border, wall, easel or hands around it.\n\nStrictly no text, letters, numbers, words, lettering, logos, brand marks, watermarks or signatures. No real people or celebrities, no real brands, no real-world landmarks.",
+  "inputs": [],
+  "codex_version": "codex-cli 0.160.1",
+  "model": "gpt-6-luna",
+  "effort": "low",
+  "thread_id": "01a17d9a-82b1-7143-9982-c7f64774a2f5",
+  "created": "2026-10-27T10:44:47",
+  "seconds": 47,
+  "source_path": "C:\\Users\\beto-\\.codex\\generated_images\\01a17d9a-82b1-7143-9982-c7f64774a2f5\\exec-74bf9688-4d51-466c-a092-3a69253aa1a3.png",
+  "sha256": "6234f9e6e7206afd480b01edc5db5a8d7a1acad12be2e90f8641b2407bcb3d83",
+  "size": [
+    933,
+    1686
+  ],
+  "generator": "Codex CLI image_gen (codex exec)"
+}

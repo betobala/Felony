@@ -7,6 +7,7 @@
 #include "OcRunner.hpp"
 #include "oc_hw.h"
 #include "Controls4ms.hpp"
+#include "Stencil.hpp"
 
 using namespace rack;
 
@@ -116,40 +117,8 @@ struct Felony : Module {
 };
 
 // ---------------------------------------------------------------- themes
-struct FTheme {
-	NVGcolor panel, ink, grey, line, group, plate, plateInk, pill, pillInk, accent;
-};
-static const char* const THEME_NAMES[2] = {"Bone", "Slate"};
-
-// Bone (light, main) and Slate (dark), after concepts light v2 / dark v2 (docs/art/STYLE.md)
-static FTheme fTheme(int t) {
-	FTheme k;
-	if (t == 1) {
-		k.panel = nvgRGB(0x17, 0x19, 0x1B);
-		k.ink = nvgRGB(0xE6, 0xE8, 0xE8);
-		k.grey = nvgRGB(0x8A, 0x8D, 0x93);
-		k.line = nvgRGB(0x6B, 0x6F, 0x75);
-		k.group = nvgRGB(0x1B, 0x1D, 0x20);
-		k.plate = nvgRGB(0x0E, 0x10, 0x12);
-		k.plateInk = nvgRGB(0xE6, 0xE8, 0xE8);
-		k.pill = nvgRGB(0xD6, 0xD8, 0xD8);
-		k.pillInk = nvgRGB(0x17, 0x19, 0x1B);
-		k.accent = nvgRGB(0xE8, 0xB3, 0x3C);
-	}
-	else {
-		k.panel = nvgRGB(0xE8, 0xE6, 0xE1);
-		k.ink = nvgRGB(0x0F, 0x12, 0x16);
-		k.grey = nvgRGB(0x6E, 0x71, 0x77);
-		k.line = nvgRGB(0x0F, 0x12, 0x16);
-		k.group = nvgRGB(0xEE, 0xEC, 0xE7);
-		k.plate = nvgRGB(0x14, 0x16, 0x1A);
-		k.plateInk = nvgRGB(0xF6, 0xF4, 0xEF);
-		k.pill = nvgRGB(0x14, 0x16, 0x1A);
-		k.pillInk = nvgRGB(0xF6, 0xF4, 0xEF);
-		k.accent = nvgRGB(0xE8, 0xA3, 0x17);
-	}
-	return k;
-}
+// betobullet stencil (docs/art/STYLE.md): theme 0 = black panel, 1 = white panel
+using bb::THEME_NAMES;
 
 static const char* const SCREEN_COLOR_NAMES[4] = {"White", "Blue", "Yellow", "Green"};
 static NVGcolor screenColor(int i) {
@@ -163,18 +132,9 @@ static NVGcolor screenColor(int i) {
 
 namespace fms {
 const Colors& colors(const engine::Module* m) {
-	static const Colors bone = {
-		nvgRGB(0x11, 0x11, 0x11), nvgRGB(0x3A, 0x3A, 0x3A), nvgRGB(0xF6, 0xF4, 0xEF), nvgRGB(0x0F, 0x12, 0x16),
-		nvgRGB(0xD3, 0xD3, 0xD0), nvgRGB(0xF7, 0xF7, 0xF5), nvgRGB(0x8E, 0x8E, 0x8A), nvgRGB(0x5C, 0x5C, 0x5A), nvgRGB(0x05, 0x05, 0x05),
-		nvgRGB(0x1B, 0x1E, 0x24), nvgRGB(0x3A, 0x3D, 0x44), nvgRGB(0xE8, 0xA3, 0x17), nvgRGB(0xFF, 0xD2, 0x6E), nvgRGB(0x0F, 0x12, 0x16),
-		nvgRGB(0xFB, 0xFB, 0xF9)};
-	static const Colors slate = {
-		nvgRGB(0x0B, 0x0B, 0x0D), nvgRGB(0x3A, 0x3B, 0x3F), nvgRGB(0xF6, 0xF4, 0xEF), nvgRGB(0xE6, 0xE8, 0xE8),
-		nvgRGB(0xD3, 0xD3, 0xD0), nvgRGB(0xF7, 0xF7, 0xF5), nvgRGB(0x8E, 0x8E, 0x8A), nvgRGB(0x5C, 0x5C, 0x5A), nvgRGB(0x05, 0x05, 0x05),
-		nvgRGB(0x0B, 0x0B, 0x0D), nvgRGB(0x2A, 0x2C, 0x30), nvgRGB(0xE8, 0xB3, 0x3C), nvgRGB(0xFF, 0xDD, 0x8A), nvgRGB(0x6B, 0x6F, 0x75),
-		nvgRGB(0xFB, 0xFB, 0xF9)};
+	static const Colors black = bb::controlColors(0), white = bb::controlColors(1);
 	int t = m ? static_cast<const Felony*>(m)->theme : 0;
-	return t == 1 ? slate : bone;
+	return t == 1 ? white : black;
 }
 }  // namespace fms
 
@@ -356,8 +316,13 @@ struct EncoderWidget : OpaqueWidget {
 		}
 		bool pressed = pressSent || releaseAt >= 0.0;
 		fms::circle(vg, cx, cy, r * (pressed ? 0.76f : 0.8f), c.knob, c.knob, 0.f);
-		float dx = std::sin(angle) * r * 0.62f, dy = -std::cos(angle) * r * 0.62f;
-		fms::circle(vg, cx + dx, cy + dy, r * 0.075f, c.btnOn, c.btnOn, 0.f);
+		nvgBeginPath(vg);
+		nvgMoveTo(vg, cx + std::sin(angle) * r * 0.18f, cy - std::cos(angle) * r * 0.18f);
+		nvgLineTo(vg, cx + std::sin(angle) * r * 0.7f, cy - std::cos(angle) * r * 0.7f);
+		nvgStrokeColor(vg, c.pointer);
+		nvgStrokeWidth(vg, std::max(1.5f, r * 0.11f));
+		nvgLineCap(vg, NVG_BUTT);
+		nvgStroke(vg);
 	}
 };
 
@@ -413,98 +378,57 @@ struct PanelButton : OpaqueWidget {
 	}
 };
 
-/** The logotype, one SVG per theme. */
-struct LogoWidget : TransparentWidget {
-	Felony* module = nullptr;
-	std::shared_ptr<window::Svg> svg[2];
-
-	void load(float heightMm) {
-		svg[0] = window::Svg::load(asset::plugin(pluginInstance, "res/logo_bone.svg"));
-		svg[1] = window::Svg::load(asset::plugin(pluginInstance, "res/logo_slate.svg"));
-		float w = svg[0]->handle->width, h = svg[0]->handle->height;
-		box.size = Vec(mm2px(heightMm) * w / h, mm2px(heightMm));
-	}
-
-	void draw(const DrawArgs& args) override {
-		int i = (module && module->theme == 1) ? 1 : 0;
-		if (!svg[i])
-			return;
-		float sc = box.size.x / svg[i]->handle->width;
-		nvgSave(args.vg);
-		nvgScale(args.vg, sc, sc);
-		window::svgDraw(args.vg, svg[i]->handle);
-		nvgRestore(args.vg);
-	}
-};
-
-/** Panel background, outlined groups, the output box and the pill labels. */
+/** Black panel, stencil frames, hazard band and the knocked-out label plates. */
 struct PanelArt : Widget {
 	Felony* module = nullptr;
 
-	static void rrect(NVGcontext* vg, Rect mm, float radius) {
-		nvgBeginPath(vg);
-		nvgRoundedRect(vg, mm2px(mm.pos.x), mm2px(mm.pos.y), mm2px(mm.size.x), mm2px(mm.size.y), mm2px(radius));
-	}
-
-	void group(NVGcontext* vg, Rect mm, const FTheme& k) {
-		rrect(vg, mm, 2.4f);
-		nvgFillColor(vg, k.group);
-		nvgFill(vg);
-		nvgStrokeColor(vg, k.line);
-		nvgStrokeWidth(vg, mm2px(0.3f));
-		nvgStroke(vg);
-	}
-
-	/** Rounded pill with its label, centred at mm. */
-	void pill(NVGcontext* vg, Vec mm, const char* s, NVGcolor fill, NVGcolor ink) {
-		float w = std::max(mm2px(7.6f), nvgTextBounds(vg, 0, 0, s, NULL, NULL) + mm2px(2.4f));
-		float h = mm2px(3.1f);
-		nvgBeginPath(vg);
-		nvgRoundedRect(vg, mm2px(mm.x) - w / 2, mm2px(mm.y) - h / 2, w, h, h / 2);
-		nvgFillColor(vg, fill);
-		nvgFill(vg);
-		nvgFillColor(vg, ink);
-		nvgText(vg, mm2px(mm.x), mm2px(mm.y) + mm2px(0.1f), s, NULL);
-	}
-
 	void draw(const DrawArgs& args) override {
-		FTheme k = fTheme(module ? module->theme : 0);
+		bb::Ink k = bb::ink(module ? module->theme : 0);
 		NVGcontext* vg = args.vg;
 		nvgBeginPath(vg);
 		nvgRect(vg, 0, 0, box.size.x, box.size.y);
-		nvgFillColor(vg, k.panel);
+		nvgFillColor(vg, k.bg);
 		nvgFill(vg);
 
-		group(vg, ENC_GROUP, k);
-		group(vg, BTN_GROUP, k);
-		group(vg, Rect(Vec(2.6f, GROUP_TOP[0]), Vec(W - 5.2f, GROUP_H)), k);
-		group(vg, Rect(Vec(2.6f, GROUP_TOP[1]), Vec(W - 5.2f, GROUP_H)), k);
-		// outputs in the black box
-		rrect(vg, Rect(Vec(2.6f, GROUP_TOP[2]), Vec(W - 5.2f, GROUP_H)), 2.4f);
-		nvgFillColor(vg, k.plate);
-		nvgFill(vg);
-		if (module && module->theme == 1) {
-			nvgStrokeColor(vg, k.line);
-			nvgStrokeWidth(vg, mm2px(0.3f));
-			nvgStroke(vg);
+		bb::bracketFrame(vg, Rect(SCREEN.pos.minus(Vec(1.4f, 1.4f)), SCREEN.size.plus(Vec(2.8f, 2.8f))), k, 3.4f);
+		bb::notchedFrame(vg, Rect(Vec(2.4f, 43.2f), Vec(25.4f, 25.2f)), k);
+		bb::notchedFrame(vg, Rect(Vec(W - 27.8f, 43.2f), Vec(25.4f, 25.2f)), k);
+		bb::frame(vg, Rect(Vec(30.2f, 43.2f), Vec(W - 60.4f, 25.2f)), k, 1.6f, 0.45f);
+		// the band between the controls and the jacks: cartridges and hazard stripes
+		bb::bullets(vg, 4.0f, 14.0f, 71.4f, 2.2f, 5, k);
+		bb::bullets(vg, W - 14.0f, W - 4.0f, 71.4f, 2.2f, 5, k);
+		bb::hazard(vg, Rect(Vec(17.0f, 69.3f), Vec(W - 34.0f, 2.1f)), k);
+		for (int r = 0; r < 3; r++) {
+			Rect row(Vec(2.4f, GROUP_TOP[r] + 0.3f), Vec(W - 4.8f, GROUP_H - 0.6f));
+			if (r == 2) {
+				// the outputs: a solid plate in the panel ink
+				bb::chamferPath(vg, row, 2.0f);
+				nvgFillColor(vg, k.fg);
+				nvgFill(vg);
+			}
+			else {
+				bb::frame(vg, row, k);
+				for (int i = 0; i < 3; i++)
+					bb::link(vg, COLS[i], COLS[i + 1], GROUP_TOP[r] + JACK_DY, k);
+			}
 		}
 
-		std::shared_ptr<window::Font> bold = pluginFont("SpaceMono-Bold.ttf");
-		if (!bold)
+		std::shared_ptr<window::Font> stencil = pluginFont("BlackOpsOne-Regular.ttf");
+		if (!stencil)
 			return;
-		nvgTextAlign(vg, NVG_ALIGN_CENTER | NVG_ALIGN_MIDDLE);
-		nvgFontFaceId(vg, bold->handle);
+		bb::title(vg, Rect(Vec(14.0f, 1.4f), Vec(W - 28.0f, 6.2f)), "FELONY", stencil->handle, k, 4.6f);
+		nvgFontFaceId(vg, stencil->handle);
 		nvgFontSize(vg, mm2px(2.5f));
-		nvgTextLetterSpacing(vg, mm2px(0.08f));
-		pill(vg, Vec(ENC_L.x, ENC_PILL_Y), "LEFT", k.pill, k.pillInk);
-		pill(vg, Vec(ENC_R.x, ENC_PILL_Y), "RIGHT", k.pill, k.pillInk);
-		pill(vg, Vec(CX, BTN_UP.y + 4.6f), "UP", k.pill, k.pillInk);
-		pill(vg, Vec(CX, BTN_DOWN.y + 4.6f), "DOWN", k.pill, k.pillInk);
+		nvgTextLetterSpacing(vg, mm2px(0.12f));
+		bb::plate(vg, Vec(ENC_L.x, ENC_PILL_Y), "LEFT", k, 12.0f);
+		bb::plate(vg, Vec(ENC_R.x, ENC_PILL_Y), "RIGHT", k, 12.0f);
+		bb::plate(vg, Vec(CX, BTN_UP.y + 4.6f), "UP", k, 7.6f);
+		bb::plate(vg, Vec(CX, BTN_DOWN.y + 4.6f), "DOWN", k, 7.6f);
+		bb::Ink inv = {k.fg, k.bg};
 		for (int i = 0; i < 4; i++) {
-			pill(vg, Vec(COLS[i], GROUP_TOP[0] + PILL_DY), string::f("TR%d", i + 1).c_str(), k.pill, k.pillInk);
-			pill(vg, Vec(COLS[i], GROUP_TOP[1] + PILL_DY), string::f("CV%d", i + 1).c_str(), k.pill, k.pillInk);
-			// on the black box the pills turn light
-			pill(vg, Vec(COLS[i], GROUP_TOP[2] + PILL_DY), std::string(1, (char) ('A' + i)).c_str(), k.plateInk, k.plate);
+			bb::plate(vg, Vec(COLS[i], GROUP_TOP[0] + PILL_DY), string::f("TR%d", i + 1).c_str(), k);
+			bb::plate(vg, Vec(COLS[i], GROUP_TOP[1] + PILL_DY), string::f("CV%d", i + 1).c_str(), k);
+			bb::plate(vg, Vec(COLS[i], GROUP_TOP[2] + PILL_DY), std::string(1, (char) ('A' + i)).c_str(), inv);
 		}
 		nvgTextLetterSpacing(vg, 0.f);
 	}
@@ -524,12 +448,6 @@ struct FelonyWidget : ModuleWidget {
 		addChild(createWidget<ScrewSilver>(Vec(box.size.x - 2 * RACK_GRID_WIDTH, 0)));
 		addChild(createWidget<ScrewSilver>(Vec(RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
 		addChild(createWidget<ScrewSilver>(Vec(box.size.x - 2 * RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
-
-		LogoWidget* logo = new LogoWidget;
-		logo->module = module;
-		logo->load(4.6f);
-		logo->box.pos = Vec((box.size.x - logo->box.size.x) / 2, mm2px(2.4f));
-		addChild(logo);
 
 		OledDisplay* oled = new OledDisplay;
 		oled->module = module;
