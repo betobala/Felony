@@ -378,7 +378,7 @@ struct PanelButton : OpaqueWidget {
 	}
 };
 
-/** Black panel, stencil frames, hazard band and the knocked-out label plates. */
+/** Clean panel: black, white labels, two thin rules, red marks the outputs. */
 struct PanelArt : Widget {
 	Felony* module = nullptr;
 
@@ -390,45 +390,33 @@ struct PanelArt : Widget {
 		nvgFillColor(vg, k.bg);
 		nvgFill(vg);
 
-		bb::bracketFrame(vg, Rect(SCREEN.pos.minus(Vec(1.4f, 1.4f)), SCREEN.size.plus(Vec(2.8f, 2.8f))), k, 3.4f);
-		bb::notchedFrame(vg, Rect(Vec(2.4f, 43.2f), Vec(25.4f, 25.2f)), k);
-		bb::notchedFrame(vg, Rect(Vec(W - 27.8f, 43.2f), Vec(25.4f, 25.2f)), k);
-		bb::frame(vg, Rect(Vec(30.2f, 43.2f), Vec(W - 60.4f, 25.2f)), k, 1.6f, 0.45f);
-		// the band between the controls and the jacks: cartridges and hazard stripes
-		bb::bullets(vg, 4.0f, 14.0f, 71.4f, 2.2f, 5, k);
-		bb::bullets(vg, W - 14.0f, W - 4.0f, 71.4f, 2.2f, 5, k);
-		bb::hazard(vg, Rect(Vec(17.0f, 69.3f), Vec(W - 34.0f, 2.1f)), k);
-		for (int r = 0; r < 3; r++) {
-			Rect row(Vec(2.4f, GROUP_TOP[r] + 0.3f), Vec(W - 4.8f, GROUP_H - 0.6f));
-			if (r == 2) {
-				// the outputs: a solid plate in the panel ink
-				bb::chamferPath(vg, row, 2.0f);
-				nvgFillColor(vg, k.fg);
-				nvgFill(vg);
-			}
-			else {
-				bb::frame(vg, row, k);
-				for (int i = 0; i < 3; i++)
-					bb::link(vg, COLS[i], COLS[i + 1], GROUP_TOP[r] + JACK_DY, k);
-			}
-		}
+		// a hairline around the screen bezel, two rules between the sections
+		nvgBeginPath(vg);
+		nvgRect(vg, mm2px(SCREEN.pos.x - 2.2f), mm2px(SCREEN.pos.y - 2.2f), mm2px(SCREEN.size.x + 4.4f), mm2px(SCREEN.size.y + 4.4f));
+		nvgStrokeColor(vg, k.dim);
+		nvgStrokeWidth(vg, mm2px(0.25f));
+		nvgStroke(vg);
+		bb::rule(vg, 4.0f, W - 4.0f, 70.4f, k);
+		bb::rule(vg, 4.0f, W - 4.0f, GROUP_TOP[2] + 0.4f, k);
+		for (int i = 0; i < 4; i++)
+			bb::outRing(vg, Vec(COLS[i], GROUP_TOP[2] + JACK_DY), k);
 
 		std::shared_ptr<window::Font> stencil = pluginFont("BlackOpsOne-Regular.ttf");
-		if (!stencil)
+		std::shared_ptr<window::Font> bold = pluginFont("SpaceMono-Bold.ttf");
+		if (!stencil || !bold)
 			return;
-		bb::title(vg, Rect(Vec(14.0f, 1.4f), Vec(W - 28.0f, 6.2f)), "FELONY", stencil->handle, k, 4.6f);
-		nvgFontFaceId(vg, stencil->handle);
-		nvgFontSize(vg, mm2px(2.5f));
-		nvgTextLetterSpacing(vg, mm2px(0.12f));
-		bb::plate(vg, Vec(ENC_L.x, ENC_PILL_Y), "LEFT", k, 12.0f);
-		bb::plate(vg, Vec(ENC_R.x, ENC_PILL_Y), "RIGHT", k, 12.0f);
-		bb::plate(vg, Vec(CX, BTN_UP.y + 4.6f), "UP", k, 7.6f);
-		bb::plate(vg, Vec(CX, BTN_DOWN.y + 4.6f), "DOWN", k, 7.6f);
-		bb::Ink inv = {k.fg, k.bg};
+		bb::nameplate(vg, CX, 4.4f, "FELONY", stencil->handle, k, 4.4f);
+		nvgFontFaceId(vg, bold->handle);
+		nvgFontSize(vg, mm2px(2.6f));
+		nvgTextLetterSpacing(vg, mm2px(0.1f));
+		bb::label(vg, Vec(ENC_L.x, ENC_PILL_Y + 0.6f), "LEFT", k.fg);
+		bb::label(vg, Vec(ENC_R.x, ENC_PILL_Y + 0.6f), "RIGHT", k.fg);
+		bb::label(vg, Vec(CX, BTN_UP.y + 4.6f), "UP", k.fg);
+		bb::label(vg, Vec(CX, BTN_DOWN.y + 4.6f), "DOWN", k.fg);
 		for (int i = 0; i < 4; i++) {
-			bb::plate(vg, Vec(COLS[i], GROUP_TOP[0] + PILL_DY), string::f("TR%d", i + 1).c_str(), k);
-			bb::plate(vg, Vec(COLS[i], GROUP_TOP[1] + PILL_DY), string::f("CV%d", i + 1).c_str(), k);
-			bb::plate(vg, Vec(COLS[i], GROUP_TOP[2] + PILL_DY), std::string(1, (char) ('A' + i)).c_str(), inv);
+			bb::label(vg, Vec(COLS[i], GROUP_TOP[0] + PILL_DY), string::f("TR%d", i + 1).c_str(), k.fg);
+			bb::label(vg, Vec(COLS[i], GROUP_TOP[1] + PILL_DY), string::f("CV%d", i + 1).c_str(), k.fg);
+			bb::label(vg, Vec(COLS[i], GROUP_TOP[2] + PILL_DY + 0.4f), std::string(1, (char) ('A' + i)).c_str(), k.red);
 		}
 		nvgTextLetterSpacing(vg, 0.f);
 	}
