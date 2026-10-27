@@ -1,0 +1,48 @@
+{
+ "batch": "family_v1",
+ "originals": "docs/art/source/family_v1",
+ "defaults": {
+  "variants": 1,
+  "inputs": [
+   {"path": "docs/art/source/refs/all_modules_layout.png", "role": "exact layout reference: keep these eight Eurorack modules, in the same two rows, the same order, the same widths and the same position of every knob, jack, button, slider, switch, LED and screen. Change ONLY the visual style described below (panel colour and finish, graphics, knob caps, jack nuts, label style, accent colours). Do not add or remove any control."}
+  ]
+ },
+ "jobs": [
+  {
+   "id": "fam_aluminium_orange",
+   "kind": "illustration",
+   "style": "Style: classic brushed aluminium Eurorack panels with crisp black screen-printed graphics, black knobs with silver skirts, nickel jacks, thin black section outlines. One accent colour, safety orange #FF5F1F, used for output jacks' rings, lit LEDs and a small mark beside each module name. Clean, technical, laboratory-instrument feel.",
+   "subject": "Subject: the eight modules of the reference in their two rows, photographed perfectly straight on under soft even studio light, mounted in a dark rack. Every label is a blank short bar, absolutely no readable letters or numbers."
+  },
+  {
+   "id": "fam_cream_multicolour",
+   "kind": "illustration",
+   "style": "Style: warm cream panels #EFE6D2 with dark brown print, vintage synthesizer feel, coloured knob caps that code function: red for frequency/time, blue for modulation amount, yellow for levels, grey for the rest; banana-plug-style jacks with coloured rings (black inputs, red outputs). Friendly, colourful but orderly.",
+   "subject": "Subject: the eight modules of the reference in their two rows, seen straight on, mounted in a wooden-ended rack. Every label is a blank short bar, absolutely no readable letters or numbers."
+  },
+  {
+   "id": "fam_navy_brass",
+   "kind": "illustration",
+   "style": "Style: deep navy blue anodised panels #13203A with fine gold/brass print, brass-coloured knob caps with black pointers, gold jack nuts, thin gold section lines and small gold corner ticks. Elegant, premium, hi-fi feel.",
+   "subject": "Subject: the eight modules of the reference in their two rows, seen straight on, mounted in a black rack. Every label is a blank short bar, absolutely no readable letters or numbers."
+  },
+  {
+   "id": "fam_per_module_colour",
+   "kind": "illustration",
+   "style": "Style: each module has its own bold, saturated but harmonious panel colour (for example teal, mustard, coral, cobalt, sage, plum, sand, slate), all with the same white print, the same white knob caps with a black pointer line and the same black jacks. The family is unified by typography and controls, distinguished by colour.",
+   "subject": "Subject: the eight modules of the reference in their two rows, seen straight on, mounted in a black rack. Every label is a blank short bar, absolutely no readable letters or numbers."
+  },
+  {
+   "id": "fam_black_neon",
+   "kind": "illustration",
+   "style": "Style: matte black panels with thin cyan #2CE5E5 print and outlines, black knobs with a cyan pointer, cyan rings on output jacks, magenta #FF2E88 for lit LEDs only. Dark, futuristic, glowing details, but clean and uncluttered.",
+   "subject": "Subject: the eight modules of the reference in their two rows, seen straight on, mounted in a black rack in a dim room. Every label is a blank short bar, absolutely no readable letters or numbers."
+  },
+  {
+   "id": "fam_white_minimal",
+   "kind": "illustration",
+   "style": "Style: bright white powder-coated panels with light grey print, very minimal, generous empty space, small black knobs, black jacks, and one accent colour, a vivid red #E8252B, used only for output jack rings and lit LEDs. Scandinavian product design, calm and premium.",
+   "subject": "Subject: the eight modules of the reference in their two rows, seen straight on, mounted in a light grey rack. Every label is a blank short bar, absolutely no readable letters or numbers."
+  }
+ ]
+}

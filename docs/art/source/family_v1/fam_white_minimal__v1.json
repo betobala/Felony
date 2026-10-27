@@ -1,0 +1,21 @@
+{
+  "id": "fam_white_minimal",
+  "batch": "family_v1",
+  "variant": 1,
+  "kind": "illustration",
+  "prompt": "Use your built-in image generation tool to create exactly ONE image for a video game art pipeline. Do not run shell commands, do not write or edit files and do not ask questions. When the image exists, reply only with the word DONE.\n\nStyle: bright white powder-coated panels with light grey print, very minimal, generous empty space, small black knobs, black jacks, and one accent colour, a vivid red #E8252B, used only for output jack rings and lit LEDs. Scandinavian product design, calm and premium.\n\nSubject: the eight modules of the reference in their two rows, seen straight on, mounted in a light grey rack. Every label is a blank short bar, absolutely no readable letters or numbers.\n\nThe artwork fills the entire frame, with no frame, border, wall, easel or hands around it.\n\nStrictly no text, letters, numbers, words, lettering, logos, brand marks, watermarks or signatures. No real people or celebrities, no real brands, no real-world landmarks.",
+  "inputs": [],
+  "codex_version": "codex-cli 0.160.1",
+  "model": "gpt-6-luna",
+  "effort": "low",
+  "thread_id": "01a17df3-0fb9-7b11-bcca-ca71f772a529",
+  "created": "2026-10-27T12:21:36",
+  "seconds": 53,
+  "source_path": "C:\\Users\\beto-\\.codex\\generated_images\\01a17df3-0fb9-7b11-bcca-ca71f772a529\\exec-bee8b078-e39f-48c3-ab6b-b8274fa6b222.png",
+  "sha256": "23dd3f2c2748d1e243f1bccd098590563943266dca42a86754d5bccc3466e5d6",
+  "size": [
+    1672,
+    941
+  ],
+  "generator": "Codex CLI image_gen (codex exec)"
+}

@@ -7,6 +7,7 @@
 #include "OcRunner.hpp"
 #include "oc_hw.h"
 #include "Controls.hpp"
+#define BB_MODULE_COLOUR nvgRGB(0x6A, 0x34, 0x66)
 #include "Stencil.hpp"
 
 using namespace rack;
@@ -106,7 +107,7 @@ struct Felony : Module {
 
 	void dataFromJson(json_t* root) override {
 		if (json_t* t = json_object_get(root, "theme"))
-			theme = clamp((int) json_integer_value(t), 0, 1);
+			theme = clamp((int) json_integer_value(t), 0, 3);
 		if (json_t* c = json_object_get(root, "screenColor"))
 			screenColor = clamp((int) json_integer_value(c), 0, 3);
 		if (json_t* e = json_object_get(root, "eeprom")) {
@@ -132,9 +133,9 @@ static NVGcolor screenColor(int i) {
 
 namespace fms {
 const Colors& colors(const engine::Module* m) {
-	static const Colors black = bb::controlColors(0), white = bb::controlColors(1);
+	static const Colors themes[4] = {bb::controlColors(0), bb::controlColors(1), bb::controlColors(2), bb::controlColors(3)};
 	int t = m ? static_cast<const Felony*>(m)->theme : 0;
-	return t == 1 ? white : black;
+	return themes[t < 0 || t > 3 ? 0 : t];
 }
 }  // namespace fms
 
@@ -474,7 +475,7 @@ struct FelonyWidget : ModuleWidget {
 		menu->addChild(new MenuSeparator);
 		menu->addChild(createMenuLabel("Encoders: click = press, drag/wheel = turn, hold = long press"));
 		menu->addChild(createIndexPtrSubmenuItem("Screen colour", std::vector<std::string>(SCREEN_COLOR_NAMES, SCREEN_COLOR_NAMES + 4), &m->screenColor));
-		menu->addChild(createIndexPtrSubmenuItem("Theme", std::vector<std::string>(THEME_NAMES, THEME_NAMES + 2), &m->theme));
+		menu->addChild(createIndexPtrSubmenuItem("Theme", std::vector<std::string>(THEME_NAMES, THEME_NAMES + bb::NUM_THEMES), &m->theme));
 		if (m->active)
 			menu->addChild(createMenuItem("Power cycle", "", [=]() { m->started = false; }));
 	}

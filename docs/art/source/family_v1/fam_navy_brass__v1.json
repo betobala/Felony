@@ -1,0 +1,21 @@
+{
+  "id": "fam_navy_brass",
+  "batch": "family_v1",
+  "variant": 1,
+  "kind": "illustration",
+  "prompt": "Use your built-in image generation tool to create exactly ONE image for a video game art pipeline. Do not run shell commands, do not write or edit files and do not ask questions. When the image exists, reply only with the word DONE.\n\nStyle: deep navy blue anodised panels #13203A with fine gold/brass print, brass-coloured knob caps with black pointers, gold jack nuts, thin gold section lines and small gold corner ticks. Elegant, premium, hi-fi feel.\n\nSubject: the eight modules of the reference in their two rows, seen straight on, mounted in a black rack. Every label is a blank short bar, absolutely no readable letters or numbers.\n\nThe artwork fills the entire frame, with no frame, border, wall, easel or hands around it.\n\nStrictly no text, letters, numbers, words, lettering, logos, brand marks, watermarks or signatures. No real people or celebrities, no real brands, no real-world landmarks.",
+  "inputs": [],
+  "codex_version": "codex-cli 0.160.1",
+  "model": "gpt-6-luna",
+  "effort": "low",
+  "thread_id": "01a17df1-fef4-74b0-ac16-cefcbf97ac03",
+  "created": "2026-10-27T12:20:23",
+  "seconds": 50,
+  "source_path": "C:\\Users\\beto-\\.codex\\generated_images\\01a17df1-fef4-74b0-ac16-cefcbf97ac03\\exec-90d405b8-a4e0-47d0-a7f3-f4884898cc14.png",
+  "sha256": "5c34f13834a7a6ac03b2f81db42da585b0920df40387055b124c55148d643ca0",
+  "size": [
+    1672,
+    941
+  ],
+  "generator": "Codex CLI image_gen (codex exec)"
+}

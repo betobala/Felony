@@ -1,0 +1,21 @@
+{
+  "id": "fam_aluminium_orange",
+  "batch": "family_v1",
+  "variant": 1,
+  "kind": "illustration",
+  "prompt": "Use your built-in image generation tool to create exactly ONE image for a video game art pipeline. Do not run shell commands, do not write or edit files and do not ask questions. When the image exists, reply only with the word DONE.\n\nStyle: classic brushed aluminium Eurorack panels with crisp black screen-printed graphics, black knobs with silver skirts, nickel jacks, thin black section outlines. One accent colour, safety orange #FF5F1F, used for output jacks' rings, lit LEDs and a small mark beside each module name. Clean, technical, laboratory-instrument feel.\n\nSubject: the eight modules of the reference in their two rows, photographed perfectly straight on under soft even studio light, mounted in a dark rack. Every label is a blank short bar, absolutely no readable letters or numbers.\n\nThe artwork fills the entire frame, with no frame, border, wall, easel or hands around it.\n\nStrictly no text, letters, numbers, words, lettering, logos, brand marks, watermarks or signatures. No real people or celebrities, no real brands, no real-world landmarks.",
+  "inputs": [],
+  "codex_version": "codex-cli 0.160.1",
+  "model": "gpt-6-luna",
+  "effort": "low",
+  "thread_id": "01a17df1-feee-75c1-b130-51bd77327fe8",
+  "created": "2026-10-27T12:20:36",
+  "seconds": 63,
+  "source_path": "C:\\Users\\beto-\\.codex\\generated_images\\01a17df1-feee-75c1-b130-51bd77327fe8\\exec-4e585df6-9d9e-4ec4-a5f9-5e57f567615f.png",
+  "sha256": "0b00ce72ff0cdd1f9835fc92c87f8887a87e489aa72e6d426f773ad60dde6943",
+  "size": [
+    1536,
+    1024
+  ],
+  "generator": "Codex CLI image_gen (codex exec)"
+}

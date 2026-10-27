@@ -1,0 +1,21 @@
+{
+  "id": "fam_per_module_colour",
+  "batch": "family_v1",
+  "variant": 1,
+  "kind": "illustration",
+  "prompt": "Use your built-in image generation tool to create exactly ONE image for a video game art pipeline. Do not run shell commands, do not write or edit files and do not ask questions. When the image exists, reply only with the word DONE.\n\nStyle: each module has its own bold, saturated but harmonious panel colour (for example teal, mustard, coral, cobalt, sage, plum, sand, slate), all with the same white print, the same white knob caps with a black pointer line and the same black jacks. The family is unified by typography and controls, distinguished by colour.\n\nSubject: the eight modules of the reference in their two rows, seen straight on, mounted in a black rack. Every label is a blank short bar, absolutely no readable letters or numbers.\n\nThe artwork fills the entire frame, with no frame, border, wall, easel or hands around it.\n\nStrictly no text, letters, numbers, words, lettering, logos, brand marks, watermarks or signatures. No real people or celebrities, no real brands, no real-world landmarks.",
+  "inputs": [],
+  "codex_version": "codex-cli 0.160.1",
+  "model": "gpt-6-luna",
+  "effort": "low",
+  "thread_id": "01a17df2-c1e2-7ba2-9554-efb00c701f67",
+  "created": "2026-10-27T12:21:25",
+  "seconds": 62,
+  "source_path": "C:\\Users\\beto-\\.codex\\generated_images\\01a17df2-c1e2-7ba2-9554-efb00c701f67\\exec-04277cd7-6681-4483-95df-dd70e2bce6f2.png",
+  "sha256": "b0fece0409a3e4f1420a8feeebbbc27598f8af2ee8b4f73a6af66b646ad13987",
+  "size": [
+    1672,
+    941
+  ],
+  "generator": "Codex CLI image_gen (codex exec)"
+}

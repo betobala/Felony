@@ -1,0 +1,21 @@
+{
+  "id": "fam_cream_multicolour",
+  "batch": "family_v1",
+  "variant": 1,
+  "kind": "illustration",
+  "prompt": "Use your built-in image generation tool to create exactly ONE image for a video game art pipeline. Do not run shell commands, do not write or edit files and do not ask questions. When the image exists, reply only with the word DONE.\n\nStyle: warm cream panels #EFE6D2 with dark brown print, vintage synthesizer feel, coloured knob caps that code function: red for frequency/time, blue for modulation amount, yellow for levels, grey for the rest; banana-plug-style jacks with coloured rings (black inputs, red outputs). Friendly, colourful but orderly.\n\nSubject: the eight modules of the reference in their two rows, seen straight on, mounted in a wooden-ended rack. Every label is a blank short bar, absolutely no readable letters or numbers.\n\nThe artwork fills the entire frame, with no frame, border, wall, easel or hands around it.\n\nStrictly no text, letters, numbers, words, lettering, logos, brand marks, watermarks or signatures. No real people or celebrities, no real brands, no real-world landmarks.",
+  "inputs": [],
+  "codex_version": "codex-cli 0.160.1",
+  "model": "gpt-6-luna",
+  "effort": "low",
+  "thread_id": "01a17df1-fee5-7c20-9657-2303f138b6e9",
+  "created": "2026-10-27T12:20:43",
+  "seconds": 70,
+  "source_path": "C:\\Users\\beto-\\.codex\\generated_images\\01a17df1-fee5-7c20-9657-2303f138b6e9\\exec-3793def5-94be-43c5-bd1a-f36ee6716cd2.png",
+  "sha256": "598f8137c474a53d0c4e1c830f725e0046d18cb35535323a63a0ef35d94abb54",
+  "size": [
+    1672,
+    941
+  ],
+  "generator": "Codex CLI image_gen (codex exec)"
+}

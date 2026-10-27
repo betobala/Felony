@@ -1,0 +1,21 @@
+{
+  "id": "fam_black_neon",
+  "batch": "family_v1",
+  "variant": 1,
+  "kind": "illustration",
+  "prompt": "Use your built-in image generation tool to create exactly ONE image for a video game art pipeline. Do not run shell commands, do not write or edit files and do not ask questions. When the image exists, reply only with the word DONE.\n\nStyle: matte black panels with thin cyan #2CE5E5 print and outlines, black knobs with a cyan pointer, cyan rings on output jacks, magenta #FF2E88 for lit LEDs only. Dark, futuristic, glowing details, but clean and uncluttered.\n\nSubject: the eight modules of the reference in their two rows, seen straight on, mounted in a black rack in a dim room. Every label is a blank short bar, absolutely no readable letters or numbers.\n\nThe artwork fills the entire frame, with no frame, border, wall, easel or hands around it.\n\nStrictly no text, letters, numbers, words, lettering, logos, brand marks, watermarks or signatures. No real people or celebrities, no real brands, no real-world landmarks.",
+  "inputs": [],
+  "codex_version": "codex-cli 0.160.1",
+  "model": "gpt-6-luna",
+  "effort": "low",
+  "thread_id": "01a17df2-f45c-7f80-ad68-52f9fa362ac7",
+  "created": "2026-10-27T12:22:38",
+  "seconds": 122,
+  "source_path": "C:\\Users\\beto-\\.codex\\generated_images\\01a17df2-f45c-7f80-ad68-52f9fa362ac7\\exec-a4720687-98da-4503-bdbe-bed4663e5d8e.png",
+  "sha256": "a2fe1e120f6083863174743d82db7381b4ca9c6519d3a7a527806288cdcfa63c",
+  "size": [
+    1672,
+    940
+  ],
+  "generator": "Codex CLI image_gen (codex exec)"
+}
