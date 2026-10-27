@@ -402,12 +402,12 @@ struct PanelArt : Widget {
 			bb::outRing(vg, Vec(COLS[i], GROUP_TOP[2] + JACK_DY), k);
 
 		std::shared_ptr<window::Font> stencil = pluginFont("BlackOpsOne-Regular.ttf");
-		std::shared_ptr<window::Font> bold = pluginFont("SpaceMono-Bold.ttf");
+		std::shared_ptr<window::Font> bold = pluginFont("BebasNeue-Regular.ttf");
 		if (!stencil || !bold)
 			return;
 		bb::nameplate(vg, CX, 4.4f, "FELONY", stencil->handle, k, 4.4f);
 		nvgFontFaceId(vg, bold->handle);
-		nvgFontSize(vg, mm2px(2.6f));
+		nvgFontSize(vg, mm2px(5.2f));
 		nvgTextLetterSpacing(vg, mm2px(0.1f));
 		bb::label(vg, Vec(ENC_L.x, ENC_PILL_Y + 0.6f), "LEFT", k.fg);
 		bb::label(vg, Vec(ENC_R.x, ENC_PILL_Y + 0.6f), "RIGHT", k.fg);
